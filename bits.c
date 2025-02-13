@@ -174,7 +174,19 @@ NOTES:
  *   Rating: 4
  */
 int bitCount(int x) {
-  return 2;
+  int mask1 = 0x55 | (0x55 << 8) | (0x55 << 16) | (0x55 << 24);
+  int mask2 = 0x33 | (0x33 << 8) | (0x33 << 16) | (0x33 << 24);
+  int mask3 = 0x0F | (0x0F << 8) | (0x0F << 16) | (0x0F << 24);
+  int mask4 = 0xFF | (0xFF << 16);
+  int mask5 = 0xFF | (0xFF << 8);
+
+  x = (x & mask1) + ((x >> 1) & mask1);
+  x = (x & mask2) + ((x >> 2) & mask2);
+  x = (x & mask3) + ((x >> 4) & mask3);
+  x = (x & mask4) + ((x >> 8) & mask4);
+  x = (x & mask5) + ((x >> 16) & mask5);
+
+   return x; //return the number of 1's in x
 }
 /* 
  * bitNor - ~(x|y) using only ~ and & 
