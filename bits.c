@@ -196,7 +196,7 @@ int bitCount(int x) {
  *   Rating: 1
  */
 int bitNor(int x, int y) {
-  return 2;
+  return ~(x | y); //return ~(x|y)
 }
 /* 
  * byteSwap - swaps the nth byte and the mth byte
