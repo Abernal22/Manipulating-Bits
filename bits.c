@@ -208,7 +208,18 @@ int bitNor(int x, int y) {
  *  Rating: 2
  */
 int byteSwap(int x, int n, int m) {
-    return 2;
+    int n_shift = n << 3;
+    int m_shift = m << 3;
+
+    int n_byte = (x >> n_shift) & 0xFF;
+    int m_byte = (x >> m_shift) & 0xFF;
+
+    int mask = 0xFF << n_shift | 0xFF << m_shift;
+    int x_cleared = x & ~mask;
+
+    int swapped = (n_byte << m_shift) | (m_byte << n_shift);
+
+      
 }
 /*
  * ezThreeFourths - multiplies by 3/4 rounding toward 0,
