@@ -285,7 +285,7 @@ unsigned float_neg(unsigned uf) {
  *   Rating: 3
  */
 int isAsciiDigit(int x) {
-  return 2;
+  return (!( (x + ~0x30 + 1) >> 31 ) & (!( (0x39 + ~x + 1) >> 31 ))) & 1;
 }
 /* 
  * isPositive - return 1 if x > 0, return 0 otherwise 
