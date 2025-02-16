@@ -249,8 +249,18 @@ int ezThreeFourths(int x) {
  *   Rating: 2
  */
 unsigned float_abs(unsigned uf) {
-  return 2;
+  unsigned mask = 0x7FFFFFFF;
+  unsigned abs_value = uf & mask;
+
+  if (abs_value > 0x7F800000) {
+      return uf; 
+
+  }
+
+  return abs_value;
+  
 }
+  
 /* 
  * float_neg - Return bit-level equivalent of expression -f for
  *   floating point argument f.
